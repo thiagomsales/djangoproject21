@@ -1,0 +1,20 @@
+language: python
+
+python:
+  - 3.8.5
+
+env:
+  global:
+    - PIPENV_VIRTUAL_VENV_PROJECT=1
+    - PIPENV_IGNORE_VIRTUALENVS=1
+
+install:
+  - pip intall pipenv
+  - pipenv sync -d
+
+script:
+  - pipenv run flake8 .
+  - pipenv run pytest --cov=projectpro
+
+after_success:
+  - pipenv run codecov
