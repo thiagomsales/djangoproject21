@@ -3,6 +3,11 @@ language: python
 python:
   - 3.8.5
 
+services:
+  postgresql
+addons:
+  postgresql: '9.5
+
 env:
   global:
     - PIPENV_VIRTUAL_VENV_PROJECT=1
@@ -12,6 +17,9 @@ install:
   - pip intall pipenv
   - pipenv sync -d
   - cp contrib/env-sample .env
+before_script:
+  - psql -c "CREATE DATABASE testdb" -U postgres
+
 
 script:
   - pipenv run flake8 .
