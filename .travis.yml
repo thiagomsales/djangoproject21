@@ -6,7 +6,8 @@ python:
 services:
   postgresql
 addons:
-  postgresql: '9.5
+  postgresql: '9.5'
+
 
 env:
   global:
