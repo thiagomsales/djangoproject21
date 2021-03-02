@@ -15,7 +15,7 @@ env:
     - PIPENV_IGNORE_VIRTUALENVS=1
 
 install:
-  - pip intall pipenv
+  - pip install pipenv
   - pipenv sync -d
   - cp contrib/env-sample .env
 before_script:
