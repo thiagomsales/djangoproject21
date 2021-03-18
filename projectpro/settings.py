@@ -32,6 +32,8 @@ DEBUG = config('DEBUG', cast=bool)
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv()) #['projectpro21.herokuapp.com']
 
+AUTH_USER_MODEL = 'base.User'
+
 
 # Application definition
 
@@ -148,11 +150,8 @@ if AWS_ACCESS_KEY_ID:
     AWS_AUTO_CREATE_BUCKET = False
     AWS_QUERYSTRING_AUTH = True
     AWS_S3_CUSTOM_DOMAIN = None
-
-    COLLECTFAST_ENABLE = True
-
     AWS_DEFAULT_ACL = 'private'
-
+    COLLECTFAST_ENABLE = True
 
     #Static Assets
 
