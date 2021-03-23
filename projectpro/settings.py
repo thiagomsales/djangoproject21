@@ -12,10 +12,10 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 import os
 from functools import partial
 from pathlib import Path
-
 import dj_database_url
 from decouple import config, Csv
-
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -33,7 +33,6 @@ DEBUG = config('DEBUG', cast=bool)
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv()) #['projectpro21.herokuapp.com']
 
 AUTH_USER_MODEL = 'base.User'
-
 
 # Application definition
 
@@ -79,6 +78,13 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'projectpro.wsgi.application'
 
+#Config Django Debug Toolbar
+
+INTERNAL_IPS=config('INTERNAL_IPS', cast=Csv(), default='127.0.0.1')
+
+if DEBUG:
+    INSTALLED_APPS.append('debug_toolbar')
+    MIDDLEWARE.insert(0, 'debug_toolbar.middleware.DebugToolbarMiddleware')
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
@@ -156,6 +162,7 @@ if AWS_ACCESS_KEY_ID:
     #Static Assets
 
     STATICFILES_STORAGE = 's3_folder_storage.s3.StaticStorage'
+    COLLECTFAST_STRATEGY = "collectfast.strategies.boto3.Boto3Strategy"
     STATIC_S3_PATH = 'static'
     STATIC_ROOT = f'/{STATIC_S3_PATH}/'
     STATIC_URL = f'//s3.amazon.com/{AWS_STORAGE_BUCKET_NAME}/{STATIC_S3_PATH}/'
@@ -171,3 +178,7 @@ if AWS_ACCESS_KEY_ID:
     INSTALLED_APPS.append('s3_folder_storage')
     INSTALLED_APPS.append('storages')
 
+SENTRY_DNS = config('SENTRY_DNS', default=None)
+
+if SENTRY_DNS:
+    sentry_sdk.init(dsn=SENTRY_DNS, integrations=[DjangoIntegration()])

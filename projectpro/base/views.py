@@ -6,4 +6,5 @@ from django.http import HttpResponse
 
 
 def home(request):
-    return HttpResponse('Project Pro 21')
+    raise ValueError()
+    return HttpResponse('<html><body>Project Pro 21<body><html>', content_type='text/html')
