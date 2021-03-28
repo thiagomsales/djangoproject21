@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,64 +8,41 @@
 
     <title>ProjectPro 21</title>
 
-    <meta name="description" content="Source code generated using layoutit.com">
-    <meta name="author" content="LayoutIt!">
-
+    <meta name="description" content="ProjectPro 21">
+    <meta name="author" content="Th-Dev">
+    <link rel="icon" type="image.png" href="{% static 'img/favicon.png' %}" />
     <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
     <script src="{% static 'js/jquery.min.js' %}"></script>
-    <script src="{% static 'js/bootstrap.min.js'%}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
     <script src="{% static 'js/scripts.js' %}"></script>
 
   </head>
   <body>
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">Navbar</a>
+  <a class="navbar-brand" href="{% url 'base:home' %}">ProjectPro 21</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
-      </li>
+
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
   </div>
 </nav>
 
-  <div class="container-fluid">
+  <div class="container">
 	<div class="row">
 		<div class="col-md-12">
 
 			<div class="jumbotron">
 				<h2>
-					Hello, world!
+					Curso de Python
 				</h2>
 				<p>
-					This is a template for a simple marketing or informational website. It includes a large callout called the hero unit and three supporting pieces of content. Use it as a starting point to create something more unique.
+                    Curso de Python do zero ao Profissional
 				</p>
 				<p>
 					<a class="btn btn-primary btn-large" href="#">Learn more</a>
@@ -75,15 +52,13 @@
 				<div class="col-md-12">
 					<div class="card">
 						<h5 class="card-header">
-							Card title
+							Mais informações sobre o instrutor
 						</h5>
 						<div class="card-body">
 							<p class="card-text">
-								Card content
+								<img src="{% static 'img/rosto_th.png' %}" alt="Foto de Thiago Sales" class="img-thumbnail float-left mr-2"/>
+                                Thiago, é um profissional que atua na área de TI há 10 anos.
 							</p>
-						</div>
-						<div class="card-footer">
-							Card footer
 						</div>
 					</div>
 				</div>
@@ -92,6 +67,30 @@
 	</div>
 </div>
 
+<footer class="main-footer mt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h3>Entre em Contato</h3>
+                <address>
+                    +55 81 98130-4539
+                    <br>
+                    <a href="mailto:tmsales26@gmail.com">tmsales26@gmail.com</a>
+                </address>
+
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                {% now 'Y'%} Project Pro 21. Todos os direitos reservados.
+            </div>
+        </div>
+    </div>
+
+
+</footer>
 
   </body>
 </html>
